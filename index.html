@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>diagrammer</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="font-awesome.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<window id="window/stringifyed">
+		<textarea id="window/strigifyed/text" class="center"></textarea>
+		<div class="bottonButtons">
+			<button onclick="Diagrammer.windows.close('stringifyed')">Закрити</button>
+		</div>
+	</window>
+	<window id="window/createElement">
+		<h4>Створити елемент</h4>
+		<table class="structure"><tbody>
+			<tr>
+				<td>Назва</td>
+				<td><input type="text" id="window/createElement/name"></td>
+			</tr>
+			<tr>
+				<td>Фігура<i>Circle - коло, rectangle - прямокутник, triangle - трикутник, diamond - ромб</i></td>
+				<td><input type="text" id="window/createElement/shape"></td>
+			</tr>
+			<tr>
+				<td>Надпис</td>
+				<td><input type="text" id="window/createElement/caption"></td>
+			</tr>
+			<tr>
+				<td>Значок<a href="http://fontawesome.io/icons/" target="_blank" class="help">[?]</a><i>Назва символу у fontawesome (напр.: "fa-square-o")</i></td>
+				<td><input type="text" id="window/createElement/icon"></td>
+			</tr>
+			<tr>
+				<td>Стиль CSS</td>
+				<td><textarea id="window/createElement/style"></textarea></td>
+			</tr>
+			<tr>
+				<td>Ширина у px</td>
+				<td><input type="number" id="window/createElement/width"></td>
+			</tr>
+			<tr>
+				<td>Висота у px</td>
+				<td><input type="number" id="window/createElement/height"></td>
+			</tr>
+			<tr>
+				<td>Особливий ID<i>Так позначатиметься об'єкт у схемі</i></td>
+				<td><input type="text" id="window/createElement/id"></td>
+			</tr>
+		</tbody></table>
+		<div class="bottonButtons">
+			<button onclick="Diagrammer.windows.close('createElement')">Закрити</button>
+			<button onclick="Diagrammer.elements.create()">Створити</button>
+		</div>
+	</window>
+	<span id="state" class="hidden">/</span>
+	<aside>
+		<button>
+			<i class="fa fa-folder-open-o" aria-hidden="true"></i>
+			Завантажити дані фігур
+		</button>
+		<button onclick="Diagrammer.save()">
+			<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			Зберегти
+		</button>
+		<button onclick="Diagrammer.open( $('savedInfo').value )">
+			<i class="fa fa-folder-open-o" aria-hidden="true"></i>
+			Відкрити
+		</button>
+		<textarea id="savedInfo"></textarea>
+		<h4>Типові елементи</h4>
+		<ul id="typicalElements"></ul>
+		<h4>Унікальні елементи</h4>
+		<ul id="uniqueElements"></ul>
+	</aside>
+	<header>
+		<span>Зв'язки: </span>
+		<button onclick="Diagrammer.connector.on('connect')">
+			<i class="fa fa-link" aria-hidden="true"></i>Створити
+		</button>
+		<button onclick="Diagrammer.connector.on('disconnect')">
+			<i class="fa fa-chain-broken" aria-hidden="true"></i>Видалити
+		</button>
+		<button onclick="if( confirm( Diagrammer.msgs.getMsg( {type:'info', msg:'really_del_all_conns'} ) ) ) Diagrammer.connector.delAll()">
+			<i class="fa fa-eraser" aria-hidden="true"></i>Видалити всі
+		</button>
+		<span>Елементи: </span>
+		<button onclick="Diagrammer.windows.open('createElement')">
+			<i class="fa fa-plus" aria-hidden="true"></i>Створити
+		</button>
+		<button onclick="if( confirm( Diagrammer.msgs.getMsg( {type:'info', msg:'really_del_all'} ) ) ) Diagrammer.elements.delAll()">
+			<i class="fa fa-eraser" aria-hidden="true"></i>Видалити всі
+		</button>
+		<span>Обробка: </span>
+		<button onclick="Diagrammer.done()">
+			<i class="fa fa-plus" aria-hidden="true"></i>Перетворити в рядок
+		</button>
+	</header>
+	<div id="container"></div>
+	<svg id="arrows">
+		<defs id="defs">
+			<marker id="arrow" markerWidth="15" markerHeight="15" refX="10" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 10 10">
+				<path d="M0,0 L0,6 L12,3" stoke="#000" stroke-width="1"></path>
+			</marker>
+			<marker id="fromArrow" markerWidth="15" markerHeight="15" refX="10" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 10 10">
+				<path d="M0,0 L0,6 L12,3" stoke="#0a0" stroke-width="1"></path>
+			</marker>
+			<marker id="toArrow" markerWidth="15" markerHeight="15" refX="10" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 10 10">
+				<path d="M0,0 L0,6 L12,3" stoke="#a00" stroke-width="1"></path>
+			</marker>
+		</defs>
+	</svg>
+	<script type="text/javascript" src="interact.min.js"></script>
+	<script type="text/javascript" src="cookies.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

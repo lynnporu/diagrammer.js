@@ -1,0 +1,117 @@
+:root{
+    --panel_background    :white;
+    --panel_textcolor     :#333;
+    --connector_line_color:#f00;
+    --connected_line_color:#090;
+    --statebar_background :rgba(0,0,0,.7);
+    --statebar_textcolor  :rgba(255,255,255,.7);
+    --button_background   :white;
+    --button_bordercolor  :#eee;
+    --button_hovercolor   :#eee;
+    --button_activecolor  :#ddd;
+    --textarea_background :white;
+    --textarea_bordercolor:#d9d9d9;
+    --textarea_focusborder:black;
+    --highlighted_textarea:#f2f2f2;
+    --window_bordercolor  :#aaa;
+    --window_shadowcolor  :rgba(0,0,0,.5);
+    --table_evenstrings   :#f7f7f7;
+    --under_caption       :#888;
+    --figure_bordercolor  :#888;
+    --figure_shadowcolor  :lime;
+    --arrows_color        :black;
+    --arrowhead_color     :black;
+    --container_background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHUlEQVQoU2N89+7dfwYiAOOoQnyhRN3g2bBhAwMACm8n9Rse/y4AAAAASUVORK5CYII=)
+}
+/*:root{
+    --panel_background    :black;
+    --panel_textcolor     :#eee;
+    --connector_line_color:#f00;
+    --connected_line_color:#0f0;
+    --statebar_background :rgba(255,255,255,.1);
+    --statebar_textcolor  :rgba(255,255,255,.7);
+    --button_background   :black;
+    --button_bordercolor  :#333;
+    --button_hovercolor   :#333;
+    --button_activecolor  :#555;
+    --textarea_background :black;
+    --textarea_bordercolor:#333;
+    --textarea_focusborder:white;
+    --highlighted_textarea:#333;
+    --window_bordercolor  :black;
+    --window_shadowcolor  :rgba(0,0,0,.8);
+    --table_evenstrings   :#0a0a0a;
+    --under_caption       :#666;
+    --figure_bordercolor  :#333;
+    --figure_shadowcolor  :lime;
+    --arrows_color        :white;
+    --arrowhead_color     :white;
+    --container_background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHElEQVQoU2Pk5eX9z0AEYBxViC+UqBs8FhYWDAD/vgwvK/SWkQAAAABJRU5ErkJggg==)
+}*/
+
+/*general*/
+body {overflow:hidden; font-family:'Roboto Regular','Open Sans',sans-serif; font-size:1.2em !important; color:var(--panel_textcolor) !important}
+#state {position:absolute; bottom:0; right:0; background:var(--statebar_background); color:var(--statebar_textcolor); padding:5px 10px; z-index:10}
+#state.visible {opacity:1}
+#state.hidden {opacity:0}
+* {outline:none}
+button {border:0; background:var(--button_background); border:1px solid var(--button_bordercolor); padding:5px 8px; transition:.3s}
+button:hover {background:var(--button_hovercolor)}
+button:active {background:var(--button_activecolor)}
+input, textarea {border:1px solid var(--textarea_bordercolor); background:var(--textarea_background); padding:2px 5px; transition:.3s}
+input:focus, textarea:focus {border-color:var(--textarea_focusborder) !important}
+a.help {color:var(--under_caption); padding:0 5px}
+a.help {color:var(--under_caption); padding:0 5px}
+
+/*header*/
+header {position:fixed; top:0; left:240px; width:100%; background:var(--panel_background); z-index:10; padding:8px 15px}
+header button i {padding:0 5px}
+header span:not(:first-child) {margin-left:15px}
+
+/*aside*/
+aside {position:absolute; left:0; top:0; width:240px; height:100%; background:var(--panel_background); padding:10px; border-right:1px solid var(--button_bordercolor); overflow-y:scroll; z-index:1}
+aside ul {list-style:none; padding:0; margin:0}
+aside h4 {margin:25px 0 5px}
+aside button {border:0; padding:10px 0 10px 10px; width:100%; text-align:left; border-bottom:1px solid var(--button_bordercolor)}
+aside button i {font-size:16px !important; width:20px; position:relative; bottom:-2px; left:-4px}
+aside textarea {width:100%; height:100px; resize:none; border:0; background:var(--highlighted_textarea)}
+aside ul .close {float:right; margin-top:-40px; font-size:15px; font-weight:200; cursor:pointer; padding:12px 13px; transition:.3s; color:var(--panel_textcolor)}
+aside ul .close:hover {background:var(--button_hovercolor); color:var(--panel_textcolor)}
+
+/*window*/
+window {display:none; z-index:11; position:absolute; background:var(--panel_background); top:50px; left:calc( 50% - 300px ); width:600px; padding:20px 30px; border-radius:5px; border:1px solid var(--window_bordercolor); box-shadow:0 2px 3px 0 var(--window_shadowcolor)}
+window h4 {margin:0 0 1em}
+window table.structure {margin:1em 0}
+window table.structure textarea {resize:vertical}
+window table.structure tr:nth-child(even) {background:var(--table_evenstrings)}
+window table.structure td {vertical-align:top; padding:3px}
+window table.structure tr td:first-child {width:40%}
+window table.structure tr td:last-child * {width:100%}
+window table.structure tr td:first-child i {display:block; color:var(--under_caption)}
+window .bottonButtons {text-align:center}
+window .bottonButtons button {margin:0 5px}
+window .center {width:100%; resize:vertical; height:10em}
+
+/*container*/
+#container {z-index:5;position:absolute;top:43px;left:240px;padding:0;width:100%;height:100%}
+.figure {padding:5px; background:var(--panel_background); box-shadow:0 0 0 1px var(--figure_bordercolor) inset; text-align:center; font-family:monospace; display:flex; justify-content:center; align-content:center; flex-direction:column; position:absolute}
+#arrows {z-index:4;position:absolute;top:43px;left:240px;padding:0;width:100%;height:100%;background:var(--button_hovercolor);background:var(--container_background)}
+body.connect .figure {box-shadow:0 0 4px 1px var(--figure_shadowcolor) inset, 0 0 4px 1px var(--figure_shadowcolor) !important; background:var(--figure_bordercolor); color:var(--panel_textcolor)}
+.figure .options {display:none; position:absolute; top:-36px; left:0; width:97px; background:var(--panel_background); padding:5px}
+.figure .options button {margin:0px 2px; font-size:12px !important; border:1px solid var(--button_bordercolor); padding:6px 5px; text-align:center; display:inline-block !important; width:25px; height:25px}
+
+/*figures*/
+.rectangle {width:100px; height:100px}
+.circle {width:100px; height:100px; border-radius:100%}
+.triangle {width:0; height:0; border-left:102px solid transparent; border-right:102px solid transparent; border-bottom:102px solid var(--figure_bordercolor); background:transparent !important}
+.triangle:before {content:''; width:0px; height:0px; background:transparent !important; border-left:100px solid transparent; border-bottom:100px solid var(--panel_background); border-right:100px solid transparent; z-index:3; position:absolute; top:201px; left:2px}
+.diamond {width:100px;height:100px;box-shadow:0 0 0 1px var(--figure_bordercolor) inset; rotate:45deg}
+.diamond > div:nth-child(2) {transform:rotate(-45deg)}
+
+/*arrows*/
+#fromArrow { fill:var(--connected_line_color) }
+#toArrow { fill:var(--connector_line_color) }
+#arrow { fill:var(--arrowhead_color) }
+line.connector {stroke:var(--connector_line_color) !important; marker-end:url(#toArrow) !important}
+line.connected {stroke:var(--connected_line_color) !important; marker-end:url(#fromArrow) !important}
+#arrows line {stroke:var(--arrows_color); stroke-width:1; marker-end:url(#arrow)}
